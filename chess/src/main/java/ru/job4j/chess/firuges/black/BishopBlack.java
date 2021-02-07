@@ -22,19 +22,20 @@ public class BishopBlack implements Figure {
 
     @Override
     public Cell[] way(Cell dest) {
-        if (!isDiagonal(Cell.findBy(getPosition().getX(), getPosition().getY()),dest)) {
+        if (!isDiagonal(Cell.findBy(getPosition().getX(), getPosition().getY()), dest)) {
             throw new ImpossibleMoveException(
                     String.format("Could not way by diagonal from %s to %s", position, dest)
             );
         }
         int size = Math.abs(getPosition().getX() - dest.getX());
         Cell[] cells = new Cell[size];
-         int distanceByX = dest.getX() - getPosition().getX();
-         int distanceByY = dest.getY() - getPosition().getY();
-         int deltaX = (distanceByX)/(Math.abs(distanceByX));
-         int deltaY = (distanceByY)/(Math.abs(distanceByY));
+        int distanceByX = dest.getX() - getPosition().getX();
+        int distanceByY = dest.getY() - getPosition().getY();
+        int deltaX = (distanceByX) / (Math.abs(distanceByX));
+        int deltaY = (distanceByY) / (Math.abs(distanceByY));
         for (int i = 1; i <= size; i++) {
-            cells[i - 1] = Cell.findBy((getPosition().getX() + i) * deltaX, (getPosition().getY() + i) * deltaY);
+            cells[i - 1] = Cell.findBy((getPosition().getX() + i) * deltaX,
+                    (getPosition().getY() + i) * deltaY);
         }
         return cells;
     }

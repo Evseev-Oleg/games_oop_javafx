@@ -8,20 +8,21 @@ import ru.job4j.chess.firuges.Figure;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class BishopBlackTest{
+public class BishopBlackTest {
 
     @Test
     public void testPosition() {
         Figure figure = new BishopBlack(Cell.C8);
         Cell pos = figure.position();
-        assertThat(pos,is(Cell.findBy(2,0)));
+        assertThat(pos, is(Cell.findBy(2, 0)));
     }
+
     @Test
     public void testWay() {
         Figure figure = new BishopBlack(Cell.C1);
         Cell[] cells = figure.way(Cell.G5);
-        Cell[] expect = new Cell[]{Cell.D2,Cell.E3,Cell.F4,Cell.G5};
-        assertThat(cells,is(expect));
+        Cell[] expect = new Cell[]{Cell.D2, Cell.E3, Cell.F4, Cell.G5};
+        assertThat(cells, is(expect));
     }
 
     @Test(expected = ImpossibleMoveException.class)
@@ -34,6 +35,6 @@ public class BishopBlackTest{
     public void testCopy() {
         Figure figure = new BishopBlack(Cell.B8);
         figure = figure.copy(Cell.A6);
-        assertThat(figure.position(),is(Cell.findBy(0,2)));
+        assertThat(figure.position(), is(Cell.findBy(0, 2)));
     }
 }
